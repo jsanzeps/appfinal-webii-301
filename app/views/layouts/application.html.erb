@@ -1,15 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Appfinalwebii301</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
   </head>
 
   <body>
-    <%= yield %>
+
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Site Title</li>
+      <li>
+        <a href="#">legal</a>
+        <ul class="menu vertical">
+          <li><%= link_to 'privacidad', legal_privacidad_path %></li>
+          <li><%= link_to 'cookies', legal_cookies_path %></li>
+          <li><%= link_to 'términos de uso', legal_terminos_de_uso_path %></li>
+        </ul>
+      </li>
+      <li><%= link_to 'contacto', contacto_path %></li>
+      <li><%= link_to 'acerca de', acerca_de_path %></li>
+      <li><%= link_to 'quienes somos', quienes_somos_path %></li>
+      <li><%= link_to 'donde estamos',donde_estamos_path  %></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><input type="search" placeholder="Search"></li>
+      <li><button type="button" class="button">Search</button></li>
+    </ul>
+  </div>
+</div>
+
+
+  <div class="grid-x align-center">
+    <div class="small-10 medium-8 large-6 cell">
+      <%= yield %>
+    </div>
+  </div>
+
+
+
   </body>
 </html>

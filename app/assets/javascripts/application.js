@@ -13,4 +13,11 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require jquery
+//= require jquery-ui
+//= require foundation
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+    $(function(){ $(document).foundation(); });
+});
